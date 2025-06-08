@@ -1,0 +1,1055 @@
+<title>Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f3f4f6',
+                            100: '#e5e7eb',
+                            200: '#d1d5db',
+                            300: '#9ca3af',
+                            400: '#6b7280',
+                            500: '#4b5563',
+                            600: '#374151',
+                            700: '#1f2937',
+                            800: '#111827',
+                            900: '#030712',
+                        },
+                        secondary: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#bfa094',
+                            600: '#a18072',
+                            700: '#977669',
+                            800: '#846358',
+                            900: '#43302b',
+                        },
+                        accent: {
+                            50: '#fbf7f4',
+                            100: '#f5ebe5',
+                            200: '#ead6c9',
+                            300: '#ddbca7',
+                            400: '#d09c7a',
+                            500: '#c17d54',
+                            600: '#b56a40',
+                            700: '#9c5333',
+                            800: '#7e4429',
+                            900: '#663a24',
+                        },
+                        dark: {
+                            800: '#1e1e1e',
+                            900: '#121212',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Montserrat', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 40px -10px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
+                        'premium-hover': '0 20px 60px -15px rgba(0, 0, 0, 0.2), 0 8px 24px -8px rgba(0, 0, 0, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .premium-gradient {
+            background: linear-gradient(135deg, #1f2937 0%, #977669 100%);
+        }
+        
+        .service-card {
+            transition: all 0.4s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .testimonial-gradient {
+            background: linear-gradient(135deg, #1f2937 0%, #846358 100%);
+        }
+        
+        .btn-premium {
+            transition: all 0.3s ease;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .form-error {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        
+        .form-success {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s ease;
+        }
+        
+        .form-success.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .form-loading {
+            display: none;
+        }
+        
+        .form-loading.show {
+            display: flex;
+        }
+        
+        .spinner {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.5s forwards;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .services-section {
+  padding-top: 10rem; /* pt-40 */
+  padding-bottom: 4rem; /* py-16 */
+  background: linear-gradient(135deg, #1f2937 0%, #977669 100%);
+}
+
+.services-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.services-heading {
+  margin-bottom: 3rem;
+}
+
+.services-title {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.gallery-item {
+  transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-0.5rem);
+}
+
+.aspect-square {
+  position: relative;
+  width: 100%;
+}
+
+.contact-button-container {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+/* Large Desktop (1280px and above) */
+@media (min-width: 1280px) {
+  .services-container {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .services-title {
+    font-size: 3.75rem;
+  }
+}
+
+/* Desktop (1024px to 1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .services-section {
+    padding-top: 8rem;
+    padding-bottom: 3.5rem;
+  }
+  
+  .services-container {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .services-title {
+    font-size: 3.5rem;
+  }
+}
+
+/* Tablet (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .services-section {
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+  }
+  
+  .services-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .services-title {
+    font-size: 3rem;
+  }
+  
+  .aspect-square {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+/* Large Mobile (480px to 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+  .services-section {
+    padding-top: 5rem;
+    padding-bottom: 2.5rem;
+  }
+  
+  .services-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .services-heading {
+    margin-bottom: 2rem;
+  }
+  
+  .services-title {
+    font-size: 2.5rem;
+  }
+  
+  .contact-button-container {
+    margin-top: 2.5rem;
+  }
+  
+  .aspect-square {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}
+
+/* Small Mobile (below 480px) */
+@media (max-width: 479px) {
+  .services-section {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+  }
+  
+  .services-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .services-heading {
+    margin-bottom: 1.5rem;
+  }
+  
+  .services-title {
+    font-size: 2rem;
+  }
+  
+  .contact-button-container {
+    margin-top: 2rem;
+  }
+  
+  .gallery-item .mt-4 p {
+    font-size: 0.875rem;
+  }
+  
+  .aspect-square {
+    max-width: 180px;
+    margin: 0 auto;
+  }
+}
+
+/* Extra Small Mobile (below 360px) */
+@media (max-width: 359px) {
+  .aspect-square {
+    max-width: 150px;
+  }
+}
+        
+        section {
+  padding-top: 8rem; /* Default (mobile) */
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  section {
+    padding-top: 10rem; /* md:pt-40 */
+  }
+}
+
+/* Responsive heading */
+section h1 {
+  font-size: 2.25rem; /* text-4xl */
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  section h1 {
+    font-size: 3rem; /* md:text-5xl */
+  }
+}
+
+@media (min-width: 1024px) {
+  section h1 {
+    font-size: 3.75rem; /* lg:text-6xl */
+  }
+}
+
+/* Responsive paragraph */
+section p {
+  font-size: 1rem; /* base */
+  color: #e5e7eb; /* text-gray-100 */
+}
+
+@media (min-width: 768px) {
+  section p {
+    font-size: 1.125rem; /* text-lg */
+  }
+}
+
+/* Responsive grid layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Image fills its container perfectly */
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive button container */
+.mt-12.text-center,
+.mt-16.text-center,
+.mt-12.flex,
+.mt-16.flex {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Ensure images always cover the container */
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Reduce image size on mobile by limiting the max width of gallery items */
+.gallery-item {
+  max-width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 640px) {
+  .gallery-item {
+    max-width: none;
+  }
+}
+
+
+
+    </style>
+</head>
+<body class="bg-gray-50 text-dark-800">
+    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-premium fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 md:px-8 lg:px-16">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold">
+                        <span class="playfair text-primary-700">Inter</span><span class="playfair text-accent-700">Medius</span>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-10">
+                    <a href="index.html" class="text-gray-700 hover:text-accent-600 font-medium transition duration-300">Home</a>
+                    <a href="services.html" class="text-gray-700 hover:text-accent-600 font-medium transition duration-300">Services</a>
+                                        <a href="index.html#contact" class="text-gray-700 hover:text-accent-600 font-medium transition duration-300">Contact</a>
+                </div>
+                
+                <div class="hidden md:block">
+                    <a href="index.html#q" class="bg-primary-700 hover:bg-primary-800 text-white font-medium py-2 px-6 rounded-lg transition duration-300">
+                        Take the Quiz
+                    </a>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-700 hover:text-accent-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="md:hidden hidden pb-6">
+                <a href="index.html" class="block py-3 text-gray-700 hover:text-accent-600 font-medium border-b border-gray-100">Home</a>
+                <a href="services.html" class="block py-3 text-gray-700 hover:text-accent-600 font-medium border-b border-gray-100">Services</a>
+                                <a href="index.html#contact" class="block py-3 text-gray-700 hover:text-accent-600 font-medium">Contact</a>
+                <div class="mt-4">
+                    <a href="index.html#contact" class="block w-full bg-primary-700 hover:bg-primary-800 text-white font-medium py-3 px-6 rounded-lg text-center transition duration-300">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+  
+
+
+
+<section id="beast" class="pt-40 py-16 bg-secondary-50" style="background: linear-gradient(135deg, #1f2937 0%, #977669 100%);">
+
+  <div class="container mx-auto px-4 md:px-8 lg:px-16">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+        <h1 class="playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                        <span class="text-accent-400">Our</span> Services
+                    </h1>
+        <p class="text-lg text-gray-100">Explore our collection of services.</p>
+    </div>
+
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Image 1 -->
+            <div class="gallery-item transition-all duration-300 hover:-translate-y-2">
+    <div class="aspect-square rounded-lg shadow-premium overflow-hidden bg-white">
+        <div class="h-full w-full">
+            <img src="googlads.png" alt="Logo" class="w-full h-full object-cover" />
+        </div>
+    </div>
+    <div class="mt-4">
+        <p class="text-white px-2">We create professional Google Ads for your Business.</p>
+    </div>
+</div>
+
+            
+            <!-- Image 2 -->
+            <div class="gallery-item transition-all duration-300 hover:-translate-y-2">
+    <div class="aspect-square rounded-lg shadow-premium overflow-hidden bg-white">
+        <div class="h-full w-full">
+            <img src="meta.png" alt="Logo" class="w-full h-full object-cover" />
+        </div>
+    </div>
+    <div class="mt-4">
+        <p class="text-white px-2">We create professional Meta Ads for your Business.</p>
+    </div>
+</div>
+
+            
+            <!-- Image 3 -->
+            <div class="gallery-item transition-all duration-300 hover:-translate-y-2">
+    <div class="aspect-square rounded-lg shadow-premium overflow-hidden bg-white">
+        <div class="h-full w-full">
+            <img src="socialmedia.png" alt="Logo" class="w-full h-full object-cover" />
+        </div>
+    </div>
+    <div class="mt-4">
+        <p class="text-white px-2">Social Media Management for your Business.</p>
+    </div>
+</div>
+
+            
+            <!-- Image 4 -->
+            <div class="gallery-item transition-all duration-300 hover:-translate-y-2">
+    <div class="aspect-square rounded-lg shadow-premium overflow-hidden bg-white">
+        <div class="h-full w-full">
+            <img src="video.png" alt="Logo" class="w-full h-full object-cover" />
+
+        </div>
+    </div>
+    <div class="mt-4">
+        <p class="text-white px-2">Marketing using Video Creation.</p>
+    </div>
+</div>
+
+            
+            <!-- Image 5 -->
+            <div class="gallery-item transition-all duration-300 hover:-translate-y-2">
+    <div class="aspect-square rounded-lg shadow-premium overflow-hidden bg-white">
+        <div class="h-full w-full">
+            <img src="image.png" alt="Logo" class="w-full h-full object-cover" />
+        </div>
+    </div>
+    <div class="mt-4">
+        <p class="text-white px-2">Marketing using Image Creation.</p>
+    </div>
+</div>
+
+            
+            <!-- Image 6 -->
+            <div class="gallery-item transition-all duration-300 hover:-translate-y-2">
+    <div class="aspect-square rounded-lg shadow-premium overflow-hidden bg-white">
+        <div class="h-full w-full">
+            <img src="strat.png" alt="Logo" class="w-full h-full object-cover" />
+        </div>
+    </div>
+    <div class="mt-4">
+        <p class="text-white px-2">Marketing Strategy Creation and Implementation.</p>
+    </div>
+</div>
+
+            <!-- Image 7 -->
+            <div class="gallery-item transition-all duration-300 hover:-translate-y-2">
+    <div class="aspect-square rounded-lg shadow-premium overflow-hidden bg-white">
+        <div class="h-full w-full">
+            <img src="analysis.png" alt="Logo" class="w-full h-full object-cover" />
+        </div>
+    </div>
+    <div class="mt-4">
+        <p class="text-white px-2">Performance Analysis.</p>
+    </div>
+</div>
+
+            
+            <!-- Image 8 -->
+           <div class="gallery-item transition-all duration-300 hover:-translate-y-2">
+    <div class="aspect-square rounded-lg shadow-premium overflow-hidden bg-white">
+        <div class="h-full w-full">
+            <img src="rep.png" alt="Logo" class="w-full h-full object-cover" />
+        </div>
+    </div>
+    <div class="mt-4">
+        <p class="text-white px-2">Periodic Report.</p>
+    </div>
+</div>
+
+        
+      
+    </div>
+      <!-- Save Button (no functionality) -->
+        <div class="mt-12 text-center">
+            <a href="index.html#contact">
+            <button class="bg-accent-600 hover:bg-accent-700 text-white font-medium py-3 px-8 rounded-lg transition duration-300 shadow-md hover:shadow-premium-hover">
+                Contact Us
+            </button>
+            </a>
+        </div>
+</section>
+
+
+
+
+
+                
+               
+    
+
+
+  <!-- Services Section -->
+    <section id="services" class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-4 md:px-8 lg:px-16">
+            <div class="text-center mb-20">
+                <span class="text-accent-700 font-semibold uppercase tracking-wider">What We Offer</span>
+                <h2 class="playfair text-3xl md:text-4xl lg:text-5xl font-bold text-dark-800 mt-3 mb-6">Other Services</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary-700 to-accent-700 mx-auto mb-8"></div>
+                
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Service 6 -->
+                <div class="service-card bg-white rounded-xl shadow-premium hover:shadow-premium-hover p-8 border border-gray-100">
+                    <div class="bg-gradient-to-br from-accent-100 to-accent-200 text-accent-700 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+                        <i class="fas fa-bullhorn text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-800 mb-4">Content Marketing</h3>
+                    <p class="text-gray-600 mb-6">
+                        Engaging content creation for audience members of all ages, or specific ages. We can manage your social media accounts.
+                    </p>
+                    <a href="index.html#contact" class="text-accent-700 hover:text-accent-800 font-medium inline-flex items-center group">
+                        Learn more
+                        <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white rounded-xl shadow-premium hover:shadow-premium-hover p-8 border border-gray-100">
+                    <div class="bg-gradient-to-br from-accent-100 to-accent-200 text-accent-700 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+                        <i class="fas fa-paint-brush text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-800 mb-4">Graphic Design</h3>
+                    <p class="text-gray-600 mb-6">
+                        We design graphical content tailored to your needs. Specializing in Adobe programms. 
+                    </p>
+                    <a href="index.html#contact" class="text-accent-700 hover:text-accent-800 font-medium inline-flex items-center group">
+                        Learn more
+                        <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white rounded-xl shadow-premium hover:shadow-premium-hover p-8 border border-gray-100">
+                    <div class="bg-gradient-to-br from-primary-100 to-primary-200 text-primary-700 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+                        <i class="fas fa-globe text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-800 mb-4">Product Marketing</h3>
+                    <p class="text-gray-600 mb-6">
+                        Marketing strategies made for the products of your business, helping you get more sales, even worldwide.
+                    </p>
+                    <a href="index.html#contact" class="text-primary-700 hover:text-primary-800 font-medium inline-flex items-center group">
+                        Learn more
+                        <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!--
+                 Service 4 
+                <div class="service-card bg-white rounded-xl shadow-premium hover:shadow-premium-hover p-8 border border-gray-100">
+                    <div class="bg-gradient-to-br from-accent-100 to-accent-200 text-accent-700 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-800 mb-4">Strategic Digital Planning</h3>
+                    <p class="text-gray-600 mb-6">
+                        Data-driven digital marketing strategies tailored to your business goals, target audience, and competitive landscape for maximum ROI.
+                    </p>
+                    <a href="#contact" class="text-accent-700 hover:text-accent-800 font-medium inline-flex items-center group">
+                        Learn more
+                        <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                 Service 5 
+                <div class="service-card bg-white rounded-xl shadow-premium hover:shadow-premium-hover p-8 border border-gray-100">
+                    <div class="bg-gradient-to-br from-primary-100 to-primary-200 text-primary-700 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+                        <i class="fas fa-desktop text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-800 mb-4">Premium Web Design</h3>
+                    <p class="text-gray-600 mb-6">
+                        Sophisticated, responsive website design that captures your brand essence with immersive user experiences that convert visitors into customers.
+                    </p>
+                    <a href="#contact" class="text-primary-700 hover:text-primary-800 font-medium inline-flex items-center group">
+                        Learn more
+                        <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                -->
+            
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    
+   
+
+
+
+<!-- Footer -->
+    <footer class="bg-dark-900 text-white py-16">
+        <div class="container mx-auto px-4 md:px-8 lg:px-16">
+            <div class="flex flex-col md:flex-row justify-between mb-12">
+                <div class="mb-10 md:mb-0 md:w-1/3">
+                    <div class="text-2xl font-bold mb-6">
+                        <span class="playfair text-primary-400">Inter</span><span class="playfair text-accent-400">Medius</span>
+                    </div>
+                    <!-- <p class="text-gray-400 max-w-xs mb-6">
+                        Premium digital marketing and graphic design services for ambitious brands seeking global recognition.
+                    </p> -->
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-dark-800 hover:bg-primary-700 w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-dark-800 hover:bg-primary-700 w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="bg-dark-800 hover:bg-primary-700 w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-dark-800 hover:bg-primary-700 w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-10 md:w-2/3">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                        <ul class="space-y-3">
+                            <li><a href="index.html" class="text-gray-400 hover:text-accent-400 transition duration-300">Home</a></li>
+                            <li><a href="services.html" class="text-gray-400 hover:text-accent-400 transition duration-300">Services</a></li>
+                            <li><a href="index.html#about" class="text-gray-400 hover:text-accent-400 transition duration-300">About</a></li>
+                            <li><a href="index.html#contact" class="text-gray-400 hover:text-accent-400 transition duration-300">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-6">Services</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#beast" class="text-gray-400 hover:text-accent-400 transition duration-300">Google Ads, Meta Ads</a></li>
+   
+                            <li><a href="#beast" class="text-gray-400 hover:text-accent-400 transition duration-300">Social Media Management</a></li>
+                            <li><a href="#beast" class="text-gray-400 hover:text-accent-400 transition duration-300">Video, Image Marketing</a></li>
+                            <li><a href="#beast" class="text-gray-400 hover:text-accent-400 transition duration-300">Marketing Strategy</a></li>
+                            <li><a href="#beast" class="text-gray-400 hover:text-accent-400 transition duration-300">Analysis and Report</a></li>
+
+                            <!--<li><a href="#services" class="text-gray-400 hover:text-accent-400 transition duration-300">Digital Strategy</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-accent-400 transition duration-300">Content Marketing</a></li>-->
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-6">Contact</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-accent-400 mt-1 mr-3"></i>
+                                <span class="text-gray-400">Shkoder, Albania</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-envelope text-accent-400 mt-1 mr-3"></i>
+                                <a href="mailto:selviemilani1988@gmail.com" class="text-gray-400 hover:text-accent-400 transition duration-300">selviemilani1988@gmail.com</a>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-phone text-accent-400 mt-1 mr-3"></i>
+                                <a href="tel:06860208070" class="text-gray-400 hover:text-accent-400 transition duration-300">+355 68 602 0807</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-14 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mb-4 md:mb-0">
+                    &copy; 2025 InterMedius. All rights reserved.
+                </p>
+                <!--<div class="flex space-x-8">
+                    <a href="#" class="text-gray-500 hover:text-accent-400 transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-accent-400 transition duration-300">Terms of Service</a>
+                    <a href="#" class="text-gray-500 hover:text-accent-400 transition duration-300">Sitemap</a>
+                </div>-->
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Contact form functionality
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+        const sendAnother = document.getElementById('send-another');
+        const submitButton = document.getElementById('submit-button');
+        const formLoading = document.getElementById('form-loading');
+        
+        // Form validation
+        function validateEmail(email) {
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+        
+        function showError(field, message) {
+            const errorElement = document.getElementById(`${field}-error`);
+            errorElement.textContent = message;
+            errorElement.classList.remove('hidden');
+            document.getElementById(field).classList.add('border-red-500');
+            return false;
+        }
+        
+        function clearError(field) {
+            const errorElement = document.getElementById(`${field}-error`);
+            errorElement.textContent = '';
+            errorElement.classList.add('hidden');
+            document.getElementById(field).classList.remove('border-red-500');
+        }
+        
+        function validateForm() {
+            let isValid = true;
+            
+            // Validate name
+            const name = document.getElementById('name').value.trim();
+            if (name === '') {
+                isValid = showError('name', 'Please enter your name');
+            } else {
+                clearError('name');
+            }
+            
+            // Validate email
+            const email = document.getElementById('email').value.trim();
+            if (email === '') {
+                isValid = showError('email', 'Please enter your email address');
+            } else if (!validateEmail(email)) {
+                isValid = showError('email', 'Please enter a valid email address');
+            } else {
+                clearError('email');
+            }
+            
+            // Validate subject
+            const subject = document.getElementById('subject').value.trim();
+            if (subject === '') {
+                isValid = showError('subject', 'Please enter a subject');
+            } else {
+                clearError('subject');
+            }
+            
+            // Validate message
+            const message = document.getElementById('message').value.trim();
+            if (message === '') {
+                isValid = showError('message', 'Please enter your message');
+            } else if (message.length < 10) {
+                isValid = showError('message', 'Your message is too short');
+            } else {
+                clearError('message');
+            }
+            
+            return isValid;
+        }
+        
+        // Form submission
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate form
+            if (!validateForm()) {
+                return;
+            }
+            
+            // Show loading state
+            submitButton.disabled = true;
+            formLoading.classList.add('show');
+            
+            // Simulate form submission with delay
+            setTimeout(() => {
+                // Hide form and show success message
+                contactForm.classList.add('hidden');
+                formSuccess.classList.remove('hidden');
+                
+                // Add animation class after a brief delay
+                setTimeout(() => {
+                    formSuccess.classList.add('show');
+                }, 100);
+                
+                // Reset form
+                contactForm.reset();
+                submitButton.disabled = false;
+                formLoading.classList.remove('show');
+            }, 1500);
+        });
+        
+        // Send another message button
+        sendAnother.addEventListener('click', function() {
+            formSuccess.classList.remove('show');
+            
+            // Hide success message and show form after animation completes
+            setTimeout(() => {
+                formSuccess.classList.add('hidden');
+                contactForm.classList.remove('hidden');
+                contactForm.classList.add('slide-in');
+                
+                // Remove animation class after it completes
+                setTimeout(() => {
+                    contactForm.classList.remove('slide-in');
+                }, 500);
+            }, 300);
+        });
+        
+        // Real-time validation
+        document.getElementById('name').addEventListener('blur', function() {
+            if (this.value.trim() !== '') {
+                clearError('name');
+            }
+        });
+        
+        document.getElementById('email').addEventListener('blur', function() {
+            const email = this.value.trim();
+            if (email !== '' && validateEmail(email)) {
+                clearError('email');
+            }
+        });
+        
+        document.getElementById('subject').addEventListener('blur', function() {
+            if (this.value.trim() !== '') {
+                clearError('subject');
+            }
+        });
+        
+        document.getElementById('message').addEventListener('blur', function() {
+            const message = this.value.trim();
+            if (message !== '' && message.length >= 10) {
+                clearError('message');
+            }
+        });
+        
+        // Animation on scroll (simple implementation)
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.service-card');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('animate-on-scroll');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
